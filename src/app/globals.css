@@ -19,3 +19,238 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* Form Input Fields */
+.custom-input
+{
+  background-color: #121212 !important; /* Dark background */
+  border-color: #252525 !important; /* Dark border */
+  color: white !important; /* White text */
+  border-radius: 4px; /* Rounded corners for better aesthetics */
+  outline: none; /* Removes any default outline */
+}
+
+/* Hover state */
+.custom-input:hover {
+  background-color: #121212 !important; /* Maintain dark background */
+  border-color: #404040 !important; /* Slightly lighter border */
+}
+
+/* Focus state */
+.custom-input:focus {
+  background-color: #121212 !important; /* Dark background */
+  border-color: #1fbf4a !important; /* Green border for focus */
+  color: white !important; /* Text remains white */
+  box-shadow: 0 0 4px rgba(31, 191, 74, 0.8) !important; /* Subtle green glow */
+  outline: none !important; /* Remove blue outline */
+}
+
+/* Placeholder color */
+.custom-input::placeholder {
+  color: #808080 !important; /* Gray placeholder text */
+}
+
+/* Disabled state */
+.custom-input[disabled],
+{
+  background-color: #1a1a1a !important; /* Slightly darker background */
+  color: #666666 !important; /* Disabled text color */
+  border-color: #333333 !important; /* Muted border */
+  cursor: not-allowed; /* Indicate non-interactive state */
+}
+
+
+/* Dragger container styles */
+.custom-dragger {
+  background-color: #121212 !important; /* Set dark background */
+  border: 1px solid #252525 !important; /* Black border */
+  border-radius: 8px; /* Optional: Rounded corners */
+  color: white !important; /* White text */
+  transition: border-color 0.3s ease; /* Smooth border transition */
+}
+
+/* Remove blue border on hover or focus */
+.custom-dragger:hover,
+.custom-dragger:focus-within,
+.custom-dragger.ant-upload-focused {
+  border-color: #353535 !important; /* Slightly lighter black border */
+  box-shadow: none !important; /* Remove blue shadow */
+}
+
+/* Remove Ant Design's focus outline */
+.custom-dragger:focus {
+  outline: none !important; /* Eliminate blue focus outline */
+}
+
+/* Drag active state */
+.custom-dragger.ant-upload-drag-active {
+  border-color: #1FBF4A !important; /* Use theme green for active state */
+  background-color: #1e1e1e !important; /* Slightly darker background */
+}
+
+/* Text inside Dragger */
+.custom-dragger .ant-upload-text,
+.custom-dragger .ant-upload-hint {
+  color: white !important; /* Consistent text color */
+}
+
+/* Additional specificity to ensure Dragger styles take precedence */
+div.custom-dragger {
+  border-color: #252525 !important;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+.fade-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.fade-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+
+
+
+
+/* Custom antd overrides */
+.ant-steps .ant-steps-item-process .ant-steps-item-icon {
+  @apply bg-emerald-500 border-emerald-500;
+}
+
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon {
+  @apply border-emerald-500;
+}
+
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon .ant-steps-icon {
+  @apply text-emerald-500;
+}
+
+.ant-steps .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-tail::after {
+  @apply bg-emerald-500;
+}
+
+.ant-form-item-label > label {
+  @apply font-medium;
+}
+
+.ant-input:hover,
+.ant-input:focus,
+.ant-select:hover .ant-select-selector,
+.ant-select-focused .ant-select-selector {
+  @apply border-emerald-500;
+}
+
+.ant-input:focus,
+.ant-select-focused .ant-select-selector {
+  @apply shadow-emerald-500/20;
+}
+
+
+
+/* Add a vertical line to the right of the input box */
+.custom-select .ant-select-selector {
+  display: flex;
+  align-items: center;
+  border: 1px solid #000000; /* Match default border color */
+  border-radius: 6px; /* Ensure rounded corners */
+  padding-right: 36px; /* Space for the dropdown icon */
+  position: relative;
+}
+
+/* Add a vertical line inside the select box */
+.custom-select .ant-select-selector::after {
+  content: "";
+  position: absolute;
+  height: 60%; /* Adjust the line height */
+  width: 1px; /* Line thickness */
+  background-color: #100e0e; /* Line color */
+  right: 30px; /* Position the line before the dropdown icon */
+  top: 20%; /* Center the line vertically */
+}
+
+/* Style the dropdown icon */
+.custom-select .ant-select-arrow {
+  color: black !important; /* Set the arrow color to dark black */
+}
+
+/* Additional styling for hover and focus states */
+.custom-select .ant-select-selector:hover,
+.custom-select.ant-select-focused .ant-select-selector {
+  border-color: #1FBF4A; /* Highlight color on hover/focus */
+}
+
+
+
+
+/* Input hover and focus styles */
+.ant-input:hover, .ant-input:focus,
+.ant-select:hover .ant-select-selector, .ant-select-focused .ant-select-selector,
+.ant-picker:hover, .ant-picker-focused {
+  border-color: #38A169 !important; /* Green color */
+  box-shadow: 0 0 0 2px rgba(56, 161, 105, 0.2) !important; /* Optional shadow */
+}
+
+/* Disable default blue outline for accessibility */
+.ant-input:focus-visible,
+.ant-select-focused .ant-select-selector:focus-visible,
+.ant-picker-focused:focus-visible {
+  outline: none !important;
+}
+
+
+
+/* Add to globals.css */
+.ProseMirror {
+  @apply min-h-[200px] px-4 py-3;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  @apply text-gray-400 float-left h-0 pointer-events-none;
+}
+
+
+/* rewad */
+
+
+.ant-select-selector {
+  @apply h-[40px] flex items-center !important;
+}
+
+.ant-select-selection-search-input {
+  @apply h-[38px] !important;
+}
+
+.ant-select-selection-item {
+  @apply flex items-center !important;
+}
+
+.ant-btn {
+  @apply shadow-none !important;
+}
+
+.ant-input {
+  @apply focus:shadow-none !important;
+}
+
+.ant-select-dropdown {
+  @apply shadow-lg !important;
+}
+
+
+

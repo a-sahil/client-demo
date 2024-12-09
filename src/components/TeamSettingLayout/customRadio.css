@@ -1,0 +1,27 @@
+/* Override the default blue background for the checked radio button */
+.custom-radio .ant-radio-inner {
+  border-color: #000; /* Border color for the radio button */
+}
+
+.custom-radio .ant-radio:hover .ant-radio-inner {
+  border-color: #000; /* Border color on hover */
+}
+
+.custom-radio .ant-radio-checked .ant-radio-inner {
+  border-color: #000; /* Checked state border color */
+  background-color: #000; /* Checked state background color */
+}
+
+.custom-radio .ant-radio-checked::after {
+  background-color: transparent; /* Removes any default after-effect */
+}
+
+.custom-radio .ant-radio-checked .ant-radio-inner::after {
+  background-color: #fff; /* Inner dot color for the checked radio button */
+}
+
+/* Optional: Adjust focus styles */
+.custom-radio .ant-radio-wrapper:hover .ant-radio-inner,
+.custom-radio .ant-radio-wrapper:focus-within .ant-radio-inner {
+  border-color: #000; /* Consistent focus border color */
+}
