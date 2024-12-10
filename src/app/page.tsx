@@ -4,12 +4,11 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Dashboard from "@/components/Dashboard";
-import AuthModal from "@/components/Auth/Signin";
+
 import Link from "next/link";
 
 const BountyPlatform = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isModalOpen1, setIsModalOpen1] = useState(false);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
   const [isModalOpen, setIsModalOpen] = useState(false);
