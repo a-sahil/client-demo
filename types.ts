@@ -13,3 +13,22 @@ interface Bounty {
   };
   status: 'active' | 'pending' | 'failed' | 'neutral';
 }
+
+interface SocialLinks {
+  x?: string;
+  linkedin?: string;
+  github?: string;
+  portfolio?: string;
+}
+
+interface UserData {
+  firstName?: string;
+  lastName?: string;
+  username?: string;
+  walletAddress?: string;
+  profilePicture?: string;
+  socialLinks?: SocialLinks;
+  skills?: string[];
+  subSkills?: string[];
+  Bio?: string;
+}

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Form, Input, Button, message } from "antd";
 import { useRouter } from "next/navigation";
 
@@ -7,7 +7,7 @@ const ProfileForm = () => {
   const [form] = Form.useForm();
   const router = useRouter();
 
-  const handleSubmit = async (values: { X: any; LinkedIn: any; Github: any; Portfolio: any; }) => {
+  const handleSubmit = async (values: { X: string; LinkedIn: string; Github: string; Portfolio: string; }) => {
     try {
       // Get existing user data from localStorage
       const existingData = localStorage.getItem('userData');
@@ -36,7 +36,7 @@ const ProfileForm = () => {
   };
 
   // Helper function to render the label with a red asterisk for required fields
-  const renderLabel = (label: string | number | bigint | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | Promise<React.AwaitedReactNode> | null | undefined, isRequired = false) => (
+  const renderLabel = (label: string | number | bigint | boolean | Iterable<React.ReactNode> | Promise<React.AwaitedReactNode> | null | undefined, isRequired = false) => (
     <span className="text-white">
       {label}
       {isRequired && <span className="text-red-500 ml-1">*</span>}

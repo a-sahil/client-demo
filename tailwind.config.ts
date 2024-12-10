@@ -12,6 +12,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      animation: {
+        'spin-slow': 'spin 1.5s linear infinite',
+      },
     },
   },
   plugins: [],

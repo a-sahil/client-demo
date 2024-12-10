@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import { Form, Input, Select, DatePicker, Switch, Button, Tooltip } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
@@ -12,8 +12,7 @@ const FormComponent: FC<{ onValidate: (isValid: boolean) => void }> = ({
   onValidate,
 }) => {
   const [form] = useForm();
-  const [activeStep, setActiveStep] = useState(0); // 0 for initial step
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
 
   const quickDateSelect = (weeks: number) => {
     const date = dayjs().add(weeks, "week");
@@ -22,8 +21,8 @@ const FormComponent: FC<{ onValidate: (isValid: boolean) => void }> = ({
 
   // Typing the parameters of onFieldsChange
   const onFieldsChange = (
-    changedFields: any[], // Typing changedFields as an array of form field changes
-    allFields: any[] // Typing allFields as an array, even if it's not used
+    // changedFields: any[], // Typing changedFields as an array of form field changes
+    // allFields: any[] // Typing allFields as an array, even if it's not used
   ) => {
     // Validate all fields and notify parent of the validation status
     form
@@ -38,12 +37,11 @@ const FormComponent: FC<{ onValidate: (isValid: boolean) => void }> = ({
       try {
         // Validate the form fields
         const values = await form.validateFields();
-        // Check if all required fields are filled and valid
-        const isComplete = Object.values(values).every((value) => value !== undefined && value !== null && value !== "");
-        setIsButtonDisabled(!isComplete);
+
+     
       } catch (err) {
-        // If any validation fails, disable the button
-        setIsButtonDisabled(true);
+    
+        console.log(err)
       }
     };
 

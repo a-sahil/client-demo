@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Form, Input, Upload, Button, message, UploadProps, Tooltip, Select } from "antd";
-import { InboxOutlined, DeleteOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 

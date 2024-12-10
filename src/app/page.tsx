@@ -1,16 +1,15 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { ChevronDown, Flame, ChevronUp, Star, Dot } from 'lucide-react';
+import React, {  useState } from 'react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { signIn, useSession } from 'next-auth/react';
 import Dashboard from '@/components/Dashboard';
-import About from '@/components/About';
 import AuthModal from '@/components/Auth/Signin';
 
 const BountyPlatform = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen1, setIsModalOpen1] = useState(false);
+  
  
   const toggleDropdown = () => setIsOpen(!isOpen);
   const [isModalOpen, setIsModalOpen] = useState(false);

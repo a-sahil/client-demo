@@ -1,20 +1,19 @@
 'use client';
 import React, { FC, useState } from 'react';
 import { Button } from 'antd';
-import dayjs from 'dayjs';
 import { Sidebar } from '@/components/Layout/Sidebar';
 import ProgressBar from '@/components/Progress/ProgressBar';
 import DescriptionEditor from '@/components/ProgressBar/Description/DescriptionEditor';
 import FormComponent from '@/components/ProgressBar/Basic/FormComponent';
 import PrizeComponent from '@/components/ProgressBar/Reward/PrizeComponent';
 import BountySuccess from '@/components/ProgressBar/BountySuccess/BountySuccess';
-import { useForm } from 'antd/es/form/Form';
+
 import { Menu } from 'lucide-react'; // Import the menu icon
-import MyListing from '@/components/TeamSettingLayout/MyListing';
+
 import TeamMembers from '@/components/TeamSettingLayout/TeamMembers';
 
 const CreateListingForm: FC = () => {
-  const [form] = useForm();
+  // const [form] = useForm();
   const [activeStep, setActiveStep] = useState(0); // 0 for the initial step
   const [stepValid, setStepValid] = useState(false); // Tracks the current step's validation state
   const [isSuccess, setIsSuccess] = useState(false); // Flag for success step
@@ -23,16 +22,16 @@ const CreateListingForm: FC = () => {
 
 
 
-  const renderActiveComponent = () => {
-    switch (activeComponent) {
-      case 'MyListing':
-        return <MyListing />;
-      case 'TeamSettings':
-        return <TeamMembers />;
-      default:
-        return null;
-    }
-  };
+  // const renderActiveComponent = () => {
+  //   switch (activeComponent) {
+  //     case 'MyListing':
+  //       return <MyListing />;
+  //     case 'TeamSettings':
+  //       return <TeamMembers />;
+  //     default:
+  //       return null;
+  //   }
+  // };
 
 
   const stepContent = [

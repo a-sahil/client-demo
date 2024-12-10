@@ -1,6 +1,5 @@
 
 import { FC } from 'react';
-import {Sidebar} from '@/components/Layout/Sidebar';
 import {SearchHeader} from '@/components/Header/SearchHeader';
 import {TabsAndStats} from '@/components/Header/TabsAndStats';
 import {BountyCard} from '@/components/BountyList/BountyCard';

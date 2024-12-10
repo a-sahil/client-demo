@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from 'next/image';
-import { Form, Input, Upload, Button, Tooltip, message, UploadProps } from "antd";
-import { InboxOutlined, QuestionCircleOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Form, Input, Upload, Button,  message, UploadProps } from "antd";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -14,7 +13,7 @@ const ProfileForm = () => {
   const [subSkillsLength, setSubSkillsLength] = useState(0);
   const [uploadedMedia, setUploadedMedia] = useState<string | null>(null); // To store base64 or URL of uploaded image
 
-  const handleSubmit = async (values: { firstName: any; lastName: any; username: any; Bio: any; walletAddress: any; skills: string; subSkills: string; }) => {
+  const handleSubmit = async (values: { firstName: string; lastName: string; username: string; Bio: string; walletAddress: number | string; skills: string; subSkills: string; }) => {
     // Create a formatted user data object
     const userData = {
       firstName: values.firstName,
@@ -34,7 +33,7 @@ const ProfileForm = () => {
     router.push('/Profile');
   };
 
-  const handleRemoveMedia = (p0: string) => {
+  const handleRemoveMedia = () => {
     setUploadedMedia(null); // Remove the uploaded media
     message.info("Media removed successfully.");
   };

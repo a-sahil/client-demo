@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Share, Edit, X, Linkedin, Github, Globe } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Loading from '../Loading';
 
 
 interface SocialLinks {
@@ -40,13 +41,8 @@ const ProfilePage = () => {
   }, []);
 
   if (!userData) {
-    return (
-      <div className="min-h-screen bg-[#0D0D0D] text-white flex items-center justify-center">
-        <p>Loading...</p>
-      </div>
-    );
+    return <Loading />;
   }
-
   const renderSocialLinks = () => {
     const { socialLinks } = userData;
     
@@ -181,7 +177,7 @@ const ProfilePage = () => {
                 <div>
                   <p className="text-[#ACACAC] mb-2">Sub Skills</p>
                   <div className="flex flex-wrap gap-2">
-                    {userData.subSkills.map((skill: string | number | bigint | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<React.AwaitedReactNode> | null | undefined, index: React.Key | null | undefined) => (
+                    {userData.subSkills.map((skill: string | null | undefined, index: React.Key | null | undefined) => (
                       <span key={index} className="px-3 py-1 bg-[#1A1A1A] rounded-full text-sm text-[#D5DDF0]">
                         {skill}
                       </span>

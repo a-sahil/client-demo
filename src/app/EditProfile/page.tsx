@@ -1,17 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { Form, Input, Upload, Button, message, UploadProps } from "antd";
-import { InboxOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Form, Input, Upload, Button, message, UploadProps, Tooltip, Select } from "antd";
 import { LogOut } from "lucide-react";
 
 const { Dragger } = Upload;
+const { Option } = Select
 
 const EditProfile = () => {
   const [form] = Form.useForm();
   const [subSkillsLength, setSubSkillsLength] = useState(0);
   const [profilePicture, setProfilePicture] = useState<string | null>(null);
-  const [companyLogo, setCompanyLogo] = useState<string | null>(null);
+  // const [companyLogo, setCompanyLogo] = useState<string | null>(null);
 
   // Function for uploading the profile picture
   const handleProfilePictureUpload: UploadProps = {
@@ -37,34 +37,34 @@ const EditProfile = () => {
   };
 
   // Function for uploading the company logo
-  const handleCompanyLogoUpload: UploadProps = {
-    name: "file",
-    multiple: false,
-    showUploadList: false,
-    beforeUpload: (file) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setCompanyLogo(e?.target?.result as string);
-      };
-      reader.readAsDataURL(file);
-      return false;
-    },
-    onChange(info) {
-      const { status } = info.file;
-      if (status === "done") {
-        message.success(`${info.file.name} company logo uploaded successfully.`);
-      } else if (status === "error") {
-        message.error(`${info.file.name} company logo upload failed.`);
-      }
-    },
-  };
+  // const handleCompanyLogoUpload: UploadProps = {
+  //   name: "file",
+  //   multiple: false,
+  //   showUploadList: false,
+  //   beforeUpload: (file) => {
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       setCompanyLogo(e?.target?.result as string);
+  //     };
+  //     reader.readAsDataURL(file);
+  //     return false;
+  //   },
+  //   onChange(info) {
+  //     const { status } = info.file;
+  //     if (status === "done") {
+  //       message.success(`${info.file.name} company logo uploaded successfully.`);
+  //     } else if (status === "error") {
+  //       message.error(`${info.file.name} company logo upload failed.`);
+  //     }
+  //   },
+  // };
 
   const handleRemoveMedia = (type: "profilePicture" | "companyLogo") => {
     if (type === "profilePicture") {
       setProfilePicture(null);
       message.info("Profile picture removed successfully.");
     } else if (type === "companyLogo") {
-      setCompanyLogo(null);
+      // setCompanyLogo(null);
       message.info("Company logo removed successfully.");
     }
   };
@@ -266,6 +266,28 @@ const EditProfile = () => {
           >
             <Input className="bg-white text-black" placeholder="Separated by commas" />
           </Form.Item>
+
+
+          <Form.Item
+  label={
+    <div className="flex items-center justify-between w-full">
+      <span className="flex items-center text-[#64748B]">
+        Industry
+        <span className="text-red-500">*</span>
+        <Tooltip title="Select primary skills required for this task"></Tooltip>
+      </span>
+    </div>
+  }
+  name="industry"
+>
+  <Select className="custom-select" placeholder="Select...">
+    <Option value="design">Design</Option>
+    <Option value="development">Development</Option>
+    <Option value="marketing">Marketing</Option>
+  </Select>
+</Form.Item>
+
+
           <Form.Item
             name="Bio"
             label={
