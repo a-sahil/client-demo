@@ -36,7 +36,7 @@ const FormComponent: FC<{ onValidate: (isValid: boolean) => void }> = ({
     const checkFormCompletion = async () => {
       try {
         // Validate the form fields
-        const values = await form.validateFields();
+        // const values = await form.validateFields();
 
      
       } catch (err) {
@@ -98,7 +98,7 @@ const FormComponent: FC<{ onValidate: (isValid: boolean) => void }> = ({
           <Input placeholder="develop-a-new-landing-page" disabled />
         </Form.Item>
         <span className="text-xs text-[#94A3B8] mt-1 block">
-          This field can't be edited after a listing has been published
+          This field can&apos;t be edited after a listing has been published
         </span>
 
         <Form.Item

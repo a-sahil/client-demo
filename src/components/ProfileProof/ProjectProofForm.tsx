@@ -111,7 +111,7 @@ const ProjectProofForm: React.FC = () => {
 
           <Form.Item
             name="projectGithub"
-            label={<span className="text-white">Project's Github</span>}
+            label={<span className="text-white">Projects Github</span>}
             rules={[
               { required: true, message: 'Please enter GitHub link' },
               { type: 'url', message: 'Please enter a valid URL' }
