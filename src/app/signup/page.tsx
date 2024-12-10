@@ -14,6 +14,26 @@ const ProfileForm = () => {
   const [subSkillsLength, setSubSkillsLength] = useState(0);
   const [uploadedMedia, setUploadedMedia] = useState<string | null>(null); // To store base64 or URL of uploaded image
 
+  const handleSubmit = async (values: { firstName: any; lastName: any; username: any; Bio: any; walletAddress: any; skills: string; subSkills: string; }) => {
+    // Create a formatted user data object
+    const userData = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      username: values.username,
+      bio: values.Bio,
+      walletAddress: values.walletAddress,
+      profilePicture: uploadedMedia,
+      skills: values.skills.split(',').map(skill => skill.trim()),
+      subSkills: values.subSkills.split(',').map(skill => skill.trim())
+    };
+
+    // Store the data (you can use localStorage temporarily or your preferred state management)
+    localStorage.setItem('userData', JSON.stringify(userData));
+    
+    // Navigate to profile page
+    router.push('/Profile');
+  };
+
   const handleRemoveMedia = (p0: string) => {
     setUploadedMedia(null); // Remove the uploaded media
     message.info("Media removed successfully.");
@@ -62,7 +82,7 @@ const ProfileForm = () => {
           <p className="text-gray-400">Start Contributing to crypto projects</p>
         </div>
         <p className="text-lg mb-6 text-white">About you</p>
-        <Form form={form} layout="vertical" className="space-y-6" requiredMark={false}>
+        <Form form={form} layout="vertical" className="space-y-6" requiredMark={false} onFinish={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 -mb-8">
             <Form.Item
               name="firstName"

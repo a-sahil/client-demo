@@ -2,7 +2,9 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
 import Placeholder from '@tiptap/extension-placeholder';
-import { Bold, Italic, Underline, Link as LinkIcon, Link2 } from 'lucide-react';
+import TextStyle from '@tiptap/extension-text-style'; // Import TextStyle
+import Underline from '@tiptap/extension-underline'; // Import Underline
+import { Bold, Italic, Underline as UnderlineIcon, Link2 } from 'lucide-react';
 import { FC, useEffect } from 'react';
 import { Tooltip } from 'antd';
 
@@ -21,6 +23,8 @@ const DescriptionEditor: FC<DescriptionEditorProps> = ({ onChange, onValidate })
       Placeholder.configure({
         placeholder: 'Write down description for your bounty',
       }),
+      TextStyle, 
+      Underline, 
     ],
     content: '',
     editorProps: {
@@ -39,27 +43,33 @@ const DescriptionEditor: FC<DescriptionEditorProps> = ({ onChange, onValidate })
   });
 
   const toggleBold = () => {
-    editor?.chain().focus().toggleBold().run();
+    if (editor) {
+      editor.chain().focus().toggleBold().run();
+    }
   };
 
   const toggleItalic = () => {
-    editor?.chain().focus().toggleItalic().run();
+    if (editor) {
+      editor.chain().focus().toggleItalic().run();
+    }
   };
 
   const toggleUnderline = () => {
-    editor?.chain().focus().toggleUnderline().run();
+    if (editor) {
+      editor.chain().focus().toggleUnderline().run(); // Now underline should work
+    }
   };
 
   const setLink = () => {
     const url = window.prompt('URL');
-    if (url) {
-      editor?.chain().focus().setLink({ href: url }).run();
+    if (url && editor) {
+      editor.chain().focus().setLink({ href: url }).run();
     }
   };
 
   useEffect(() => {
-    if (onValidate) {
-      const initialValidity = editor?.getHTML().trim().length > 0;
+    if (onValidate && editor) {
+      const initialValidity = editor.getHTML().trim().length > 0;
       onValidate(initialValidity || false);
     }
   }, [editor, onValidate]);
@@ -105,7 +115,7 @@ const DescriptionEditor: FC<DescriptionEditorProps> = ({ onChange, onValidate })
             }`}
             aria-label="Underline"
           >
-            <Underline size={16} />
+            <UnderlineIcon size={16} />
           </button>
 
           <div className="h-6 w-px bg-[#BEBEBE]"></div>
@@ -124,12 +134,14 @@ const DescriptionEditor: FC<DescriptionEditorProps> = ({ onChange, onValidate })
             className="ml-2  px-3 py-1  bg-[#FFFFFF] border rounded-md hover:bg-gray-50 text-[#8C8C8C] text-xs"
             defaultValue="paragraph"
             onChange={(e) => {
-              if (e.target.value === 'paragraph') {
-                editor?.chain().focus().setParagraph().run();
-              } else if (e.target.value.startsWith('heading')) {
-                editor?.chain().focus().toggleHeading({
-                  level: parseInt(e.target.value.split('-')[1]) as 1 | 2 | 3,
-                }).run();
+              if (editor) {
+                if (e.target.value === 'paragraph') {
+                  editor.chain().focus().setParagraph().run();
+                } else if (e.target.value.startsWith('heading')) {
+                  editor.chain().focus().toggleHeading({
+                    level: parseInt(e.target.value.split('-')[1]) as 1 | 2 | 3,
+                  }).run();
+                }
               }
             }}
           >

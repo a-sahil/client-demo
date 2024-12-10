@@ -1,12 +1,42 @@
 "use client";
-import React from "react";
-import { Form, Input, Button } from "antd";
+import React, { useState } from "react";
+import { Form, Input, Button, message } from "antd";
+import { useRouter } from "next/navigation";
 
 const ProfileForm = () => {
   const [form] = Form.useForm();
+  const router = useRouter();
+
+  const handleSubmit = async (values: { X: any; LinkedIn: any; Github: any; Portfolio: any; }) => {
+    try {
+      // Get existing user data from localStorage
+      const existingData = localStorage.getItem('userData');
+      const existingUserData = existingData ? JSON.parse(existingData) : {};
+
+      // Merge existing data with new social links
+      const userData = {
+        ...existingUserData,
+        socialLinks: {
+          x: values.X,
+          linkedin: values.LinkedIn,
+          github: values.Github,
+          portfolio: values.Portfolio
+        }
+      };
+
+      // Store the updated data
+      localStorage.setItem('userData', JSON.stringify(userData));
+      
+      message.success('Profile updated successfully!');
+      router.push('/Profile');
+    } catch (error) {
+      console.error('Error updating profile:', error);
+      message.error('Failed to update profile. Please try again.');
+    }
+  };
 
   // Helper function to render the label with a red asterisk for required fields
-  const renderLabel = (label, isRequired = false) => (
+  const renderLabel = (label: string | number | bigint | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | Promise<React.AwaitedReactNode> | null | undefined, isRequired = false) => (
     <span className="text-white">
       {label}
       {isRequired && <span className="text-red-500 ml-1">*</span>}
@@ -18,39 +48,79 @@ const ProfileForm = () => {
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">
-            Create Your Profile
+            Update Your Profile
           </h1>
-          <p className="text-gray-400">Start Contributing to crypto projects</p>
+          <p className="text-gray-400">Add your social media links</p>
         </div>
-        <Form form={form} layout="vertical" className="space-y-6" requiredMark={false}>
+        <Form 
+          form={form} 
+          layout="vertical" 
+          className="space-y-6" 
+          requiredMark={false} 
+          onFinish={handleSubmit}
+          initialValues={{
+            X: '',
+            LinkedIn: '',
+            Github: '',
+            Portfolio: ''
+          }}
+        >
           <Form.Item
             name="X"
-            label={renderLabel("X", true)}
-            rules={[{ required: true }]}
+            label={renderLabel("X (Twitter)", true)}
+            rules={[
+              { required: true, message: 'Please enter your X (Twitter) profile URL' },
+              { type: 'url', message: 'Please enter a valid URL' }
+            ]}
           >
-            <Input className="custom-input" />
+            <Input 
+              className="custom-input" 
+              placeholder="https://x.com/yourusername"
+            />
           </Form.Item>
+          
           <Form.Item
             name="LinkedIn"
             label={renderLabel("LinkedIn", true)}
-            rules={[{ required: true }]}
+            rules={[
+              { required: true, message: 'Please enter your LinkedIn profile URL' },
+              { type: 'url', message: 'Please enter a valid URL' }
+            ]}
           >
-            <Input className="custom-input" />
+            <Input 
+              className="custom-input" 
+              placeholder="https://linkedin.com/in/yourusername"
+            />
           </Form.Item>
+          
           <Form.Item
             name="Github"
             label={renderLabel("Github", true)}
-            rules={[{ required: true }]}
+            rules={[
+              { required: true, message: 'Please enter your Github profile URL' },
+              { type: 'url', message: 'Please enter a valid URL' }
+            ]}
           >
-            <Input className="custom-input" />
+            <Input 
+              className="custom-input" 
+              placeholder="https://github.com/yourusername"
+            />
           </Form.Item>
+          
           <Form.Item
             name="Portfolio"
             label={renderLabel("Portfolio", true)}
-            rules={[{ required: true }]}
+            rules={[
+              { required: true, message: 'Please enter your portfolio URL' },
+              { type: 'url', message: 'Please enter a valid URL' }
+            ]}
           >
-            <Input className="custom-input" />
+            <Input 
+              className="custom-input" 
+              placeholder="https://yourportfolio.com"
+            />
           </Form.Item>
+
           <Form.Item className="mb-0">
             <Button
               type="primary"

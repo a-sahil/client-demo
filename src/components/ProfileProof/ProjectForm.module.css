@@ -1,0 +1,82 @@
+.formWrapper :global(.ant-form-item-required)::before {
+  display: none !important;
+}
+
+.formWrapper :global(.ant-form-item-required)::after {
+  display: inline-block;
+  margin-left: 4px;
+  color: #ff4d4f;
+  font-size: 14px;
+  font-family: SimSun, sans-serif;
+  line-height: 1;
+  content: '*';
+}
+
+.customInput {
+  background-color: #131313 !important;
+}
+
+.customInput:hover,
+.customInput:focus {
+  background-color: #131313 !important;
+  border-color: #404040 !important;
+}
+
+.customInput input {
+  background-color: #131313 !important;
+  color: white !important;
+}
+
+.customInput input::placeholder {
+  color: #6b7280 !important;
+}
+
+.customInput textarea::placeholder {
+  color: #6b7280 !important;
+}
+
+.customSelect :global(.ant-select-selector) {
+  background-color: #131313 !important;
+  border-color: #252525 !important;
+}
+
+.customSelect:hover :global(.ant-select-selector) {
+  border-color: #404040 !important;
+}
+
+.customSelect :global(.ant-select-selection-placeholder) {
+  color: #6b7280 !important;
+}
+
+.datePicker :global(.ant-picker-panel) {
+  background-color: #131313 !important;
+}
+
+.datePicker :global(.ant-picker-panel) * {
+  color: white !important;
+  border-color: #252525 !important;
+}
+
+.datePicker :global(.ant-picker-cell-in-view) {
+  color: white !important;
+}
+
+.datePicker :global(.ant-picker-cell:hover) {
+  background-color: #252525 !important;
+}
+
+.selectDropdown :global(.ant-select-dropdown) {
+  background-color: #131313 !important;
+}
+
+.selectDropdown :global(.ant-select-item) {
+  color: white !important;
+}
+
+.selectDropdown :global(.ant-select-item-option-active) {
+  background-color: #252525 !important;
+}
+
+.selectDropdown :global(.ant-select-item-option-selected) {
+  background-color: #404040 !important;
+}
