@@ -33,7 +33,7 @@ const ProfileForm = () => {
     router.push('/Profile');
   };
 
-  const handleRemoveMedia = (_p0?: string) => {
+  const handleRemoveMedia = () => {
     setUploadedMedia(null); // Remove the uploaded media
     message.info("Media removed successfully.");
   };
@@ -181,7 +181,7 @@ const ProfileForm = () => {
                   shape="circle"
                   icon={<Image src="/Vector.png" alt="remove" width={14} height={14} />}
                   className="absolute top-10 -translate-y-1/2 right-2 p-0"
-                  onClick={() => handleRemoveMedia("")}
+                  onClick={() => handleRemoveMedia()}
                 />
               )}
             </div>
