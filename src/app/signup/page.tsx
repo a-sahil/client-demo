@@ -203,7 +203,7 @@ const ProfileForm = () => {
             <Input className="custom-input" placeholder="Separated by commas" />
           </Form.Item>
 <Form.Item
-            name="skills"
+            name="skills1"
             label={
               <span className="text-white">
                 Your Skills<span className="text-red-500">*</span>

@@ -6,9 +6,11 @@ import { useRouter } from 'next/navigation';
 import { signIn, useSession } from 'next-auth/react';
 import Dashboard from '@/components/Dashboard';
 import About from '@/components/About';
+import AuthModal from '@/components/Auth/Signin';
 
 const BountyPlatform = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
  
   const toggleDropdown = () => setIsOpen(!isOpen);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,11 +41,19 @@ const BountyPlatform = () => {
           >
             Become a Sponsor
           </button>
-          <button className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
-          onClick={() => router.push('/signup')}
-          >
-            Sign Up
-          </button>
+          <button 
+      className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 
+                 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+      // onClick={() => setIsModalOpen1(true)}
+      onClick={() => router.push('signup')}
+    >
+      Sign Up
+    </button>
+
+          <AuthModal 
+        isOpen={isModalOpen1} 
+        onClose={() => setIsModalOpen1(false)} 
+      />
         </div>
       </nav>
 {/* header section */}

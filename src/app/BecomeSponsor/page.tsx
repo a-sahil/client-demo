@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { Form, Input, Upload, Button, message, UploadProps } from "antd";
-import { InboxOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Form, Input, Upload, Button, message, UploadProps, Tooltip, Select } from "antd";
+import { InboxOutlined, DeleteOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const { Dragger } = Upload;
+const { Option } = Select;
 
 const BecomeSponsor = () => {
   const [form] = Form.useForm();
@@ -272,23 +273,45 @@ const BecomeSponsor = () => {
             </div>
           </Form.Item>
 
-
           <Form.Item
-            name="Bio"
-            label={
-              <span className="text-[#64748B]">
-                Company Short Bio<span className="text-red-500">*</span>
-              </span>
-            }
-            rules={[{ required: true, message: "Required" }]}
-          >
-            <Input.TextArea
-              className="bg-white text-black"
-              placeholder="Separated by commas"
-              onChange={handleSubSkillsChange}
-              maxLength={180}
-            />
-          </Form.Item>
+  label={
+    <div className="flex items-center justify-between w-full">
+      <span className="flex items-center text-[#64748B]">
+        Industry
+        <span className="text-red-500">*</span>
+        <Tooltip title="Select primary skills required for this task"></Tooltip>
+      </span>
+    </div>
+  }
+  name="industry"
+>
+  <Select className="custom-select" placeholder="Select...">
+    <Option value="design">Design</Option>
+    <Option value="development">Development</Option>
+    <Option value="marketing">Marketing</Option>
+  </Select>
+</Form.Item>
+
+{/* Add spacing between Form Items */}
+<div className="py-1"></div> {/* Tailwind CSS spacing */}
+
+<Form.Item
+  name="Bio"
+  label={
+    <span className="text-[#64748B]">
+      Company Short Bio<span className="text-red-500">*</span>
+    </span>
+  }
+  rules={[{ required: true, message: "Required" }]}
+>
+  <Input.TextArea
+    className="bg-white text-black"
+    placeholder="Separated by commas"
+    onChange={handleSubSkillsChange}
+    maxLength={180}
+  />
+</Form.Item>
+
           <div className="text-right text-gray-400 -mt-4">
             {180 - subSkillsLength} characters left
           </div>
