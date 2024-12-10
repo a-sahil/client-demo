@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import Image from 'next/image';
-import { Form, Input, Upload, Button,  message, UploadProps } from "antd";
+import Image from "next/image";
+import { Form, Input, Upload, Button, message, UploadProps } from "antd";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -11,10 +11,17 @@ const ProfileForm = () => {
   const [form] = Form.useForm();
   const router = useRouter();
   const [subSkillsLength, setSubSkillsLength] = useState(0);
-  const [uploadedMedia, setUploadedMedia] = useState<string | null>(null); // To store base64 or URL of uploaded image
+  const [uploadedMedia, setUploadedMedia] = useState<string | null>(null);
 
-  const handleSubmit = async (values: { firstName: string; lastName: string; username: string; Bio: string; walletAddress: number | string; skills: string; subSkills: string; }) => {
-    // Create a formatted user data object
+  const handleSubmit = async (values: {
+    firstName: string;
+    lastName: string;
+    username: string;
+    Bio: string;
+    walletAddress: number | string;
+    skills: string;
+    subSkills: string;
+  }) => {
     const userData = {
       firstName: values.firstName,
       lastName: values.lastName,
@@ -22,19 +29,17 @@ const ProfileForm = () => {
       bio: values.Bio,
       walletAddress: values.walletAddress,
       profilePicture: uploadedMedia,
-      skills: values.skills.split(',').map(skill => skill.trim()),
-      subSkills: values.subSkills.split(',').map(skill => skill.trim())
+      skills: values.skills.split(",").map((skill) => skill.trim()),
+      subSkills: values.subSkills.split(",").map((skill) => skill.trim()),
     };
 
-    // Store the data (you can use localStorage temporarily or your preferred state management)
-    localStorage.setItem('userData', JSON.stringify(userData));
-    
-    // Navigate to profile page
-    router.push('/Profile');
+    localStorage.setItem("userData", JSON.stringify(userData));
+
+    router.push("/Profile");
   };
 
   const handleRemoveMedia = () => {
-    setUploadedMedia(null); // Remove the uploaded media
+    setUploadedMedia(null);
     message.info("Media removed successfully.");
   };
 
@@ -45,10 +50,10 @@ const ProfileForm = () => {
     beforeUpload: (file) => {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setUploadedMedia(e?.target?.result as string); // Set uploaded media as base64 URL
+        setUploadedMedia(e?.target?.result as string);
       };
       reader.readAsDataURL(file);
-      return false; // Prevent automatic upload
+      return false;
     },
     onChange(info) {
       const { status } = info.file;
@@ -62,10 +67,6 @@ const ProfileForm = () => {
       console.log("Dropped files", e.dataTransfer.files);
     },
   };
-
-
-  
-  
 
   const handleSubSkillsChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setSubSkillsLength(e.target.value.length);
@@ -81,7 +82,13 @@ const ProfileForm = () => {
           <p className="text-gray-400">Start Contributing to crypto projects</p>
         </div>
         <p className="text-lg mb-6 text-white">About you</p>
-        <Form form={form} layout="vertical" className="space-y-6" requiredMark={false} onFinish={handleSubmit}>
+        <Form
+          form={form}
+          layout="vertical"
+          className="space-y-6"
+          requiredMark={false}
+          onFinish={handleSubmit}
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 -mb-8">
             <Form.Item
               name="firstName"
@@ -122,12 +129,7 @@ const ProfileForm = () => {
 
           <Form.Item
             name="Bio"
-            label={
-              <span className="text-white">
-                You One Line Bio
-              </span>
-            }
-           
+            label={<span className="text-white">You One Line Bio</span>}
           >
             <Input className="custom-input py-5" />
           </Form.Item>
@@ -144,9 +146,7 @@ const ProfileForm = () => {
             <Input className="custom-input" />
           </Form.Item>
 
-{/* upcd */}
-
-<Form.Item
+          <Form.Item
             name="profilePicture"
             label={
               <span className="text-white flex items-center">
@@ -155,7 +155,7 @@ const ProfileForm = () => {
             }
           >
             <div className="relative w-auto h-28">
-            <Dragger {...props} className="custom-dragger">
+              <Dragger {...props} className="custom-dragger">
                 <div className="flex items-center">
                   {uploadedMedia ? (
                     <div className="relative w-16 h-16 mr-4">
@@ -171,7 +171,9 @@ const ProfileForm = () => {
                   )}
                   <div className="flex flex-col">
                     <p className="text-lg ">Choose or drag and drop media</p>
-                    <p className="text-sm text-gray-400 text-left">Maximum size 5 MB</p>
+                    <p className="text-sm text-gray-400 text-left">
+                      Maximum size 5 MB
+                    </p>
                   </div>
                 </div>
               </Dragger>
@@ -179,7 +181,14 @@ const ProfileForm = () => {
                 <Button
                   type="text"
                   shape="circle"
-                  icon={<Image src="/Vector.png" alt="remove" width={14} height={14} />}
+                  icon={
+                    <Image
+                      src="/Vector.png"
+                      alt="remove"
+                      width={14}
+                      height={14}
+                    />
+                  }
                   className="absolute top-10 -translate-y-1/2 right-2 p-0"
                   onClick={() => handleRemoveMedia()}
                 />
@@ -187,10 +196,9 @@ const ProfileForm = () => {
             </div>
           </Form.Item>
 
+          <hr className="h-px my-8 bg-[#94A3B8] border-1 "></hr>
 
-<hr className="h-px my-8 bg-[#94A3B8] border-1 "></hr>
-
-<Form.Item
+          <Form.Item
             name="skills"
             label={
               <span className="text-white">
@@ -201,7 +209,7 @@ const ProfileForm = () => {
           >
             <Input className="custom-input" placeholder="Separated by commas" />
           </Form.Item>
-<Form.Item
+          <Form.Item
             name="skills1"
             label={
               <span className="text-white">
@@ -243,12 +251,14 @@ const ProfileForm = () => {
                 borderColor: "none",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "linear-gradient(to right, #22CC77, #1FBF4A)")
+                (e.currentTarget.style.background =
+                  "linear-gradient(to right, #22CC77, #1FBF4A)")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "linear-gradient(to right, #1FBF4A, #22CC77)")
+                (e.currentTarget.style.background =
+                  "linear-gradient(to right, #1FBF4A, #22CC77)")
               }
-              onClick={() => router.push('/updateProfile')}
+              onClick={() => router.push("/updateProfile")}
             >
               Next
             </Button>

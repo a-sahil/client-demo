@@ -18,7 +18,6 @@ const About: FC = () => {
 
   return (
     <section id="about" className="mb-8">
-      {/* Project Screenshots */}
       <div className="grid grid-cols-2 gap-4 mb-8">
           <div className="bg-white rounded-lg overflow-hidden">
             <Image
@@ -40,7 +39,6 @@ const About: FC = () => {
           </div>
         </div>
 
-        {/* About Section */}
         <div className="mb-8">
           <h2 className="text-xl font-semibold mb-4">
             About Anchor - Community Initiative

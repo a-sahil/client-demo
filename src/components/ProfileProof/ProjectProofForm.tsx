@@ -32,7 +32,7 @@ const ProjectProofForm: React.FC = () => {
 
   const onFinish = (values: ProjectFormValues) => {
     console.log('Success:', values);
-    // Handle form submission here
+  
   };
 
   return (

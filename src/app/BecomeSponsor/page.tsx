@@ -15,7 +15,7 @@ const BecomeSponsor = () => {
   const [profilePicture, setProfilePicture] = useState<string | null>(null);
   const [companyLogo, setCompanyLogo] = useState<string | null>(null);
 
-  // Function for uploading the profile picture
+
   const handleProfilePictureUpload: UploadProps = {
     name: "file",
     multiple: false,
@@ -38,7 +38,7 @@ const BecomeSponsor = () => {
     },
   };
 
-  // Function for uploading the company logo
+
   const handleCompanyLogoUpload: UploadProps = {
     name: "file",
     multiple: false,
@@ -85,7 +85,6 @@ const BecomeSponsor = () => {
           <p className="text-[#A0AEC0] text-xl">Lets starts with some basic information about your Company</p>
         </div>
         <p className="text-lg mb-6 text-[#475569]">About you</p>
-        {/* Reduce the space between form items */}
         <Form form={form} layout="vertical" className="space-y-2" requiredMark={false}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 -mb-4">
             <Form.Item
@@ -291,8 +290,8 @@ const BecomeSponsor = () => {
   </Select>
 </Form.Item>
 
-{/* Add spacing between Form Items */}
-<div className="py-1"></div> {/* Tailwind CSS spacing */}
+
+<div className="py-1"></div> 
 
 <Form.Item
   name="Bio"

@@ -9,11 +9,10 @@ const ProfileForm = () => {
 
   const handleSubmit = async (values: { X: string; LinkedIn: string; Github: string; Portfolio: string; }) => {
     try {
-      // Get existing user data from localStorage
+      
       const existingData = localStorage.getItem('userData');
       const existingUserData = existingData ? JSON.parse(existingData) : {};
 
-      // Merge existing data with new social links
       const userData = {
         ...existingUserData,
         socialLinks: {
@@ -24,7 +23,7 @@ const ProfileForm = () => {
         }
       };
 
-      // Store the updated data
+   
       localStorage.setItem('userData', JSON.stringify(userData));
       
       message.success('Profile updated successfully!');
@@ -35,7 +34,7 @@ const ProfileForm = () => {
     }
   };
 
-  // Helper function to render the label with a red asterisk for required fields
+  
   const renderLabel = (label: string | number | bigint | boolean | Iterable<React.ReactNode> | Promise<React.AwaitedReactNode> | null | undefined, isRequired = false) => (
     <span className="text-white">
       {label}

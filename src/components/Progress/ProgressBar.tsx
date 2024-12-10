@@ -1,7 +1,7 @@
 import React from "react";
 
 interface ProgressBarProps {
-  activeStep: number; // Index of the current active step
+  activeStep: number; 
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ activeStep }) => {
@@ -9,14 +9,13 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ activeStep }) => {
 
   return (
     <div className="relative w-full max-w-lg mx-auto">
-      {/* Faint Horizontal Line */}
+    
       <div className="absolute top-3 left-2 w-60 h-0.5 bg-gray-200 z-0"></div>
 
-      {/* Steps */}
       <div className="flex justify-between items-center relative z-10">
         {steps.map((step, index) => (
           <div key={step} className="flex flex-col items-center">
-            {/* Circle */}
+         
             <div
               className={`w-6 h-6 flex justify-center items-center rounded-full border-2 ${
                 index <= activeStep
@@ -24,11 +23,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ activeStep }) => {
                   : "border-gray-300"
               }`}
             >
-              {/* Blue Dot */}
+        
               {index === activeStep && (
                 <div className="w-2 h-2 rounded-full bg-[#0043CE]"></div>
               )}
-              {/* Checkmark for completed steps */}
+              
               {index < activeStep && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +44,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ activeStep }) => {
               )}
             </div>
 
-            {/* Step Label */}
+      
             <div
               className={`text-xs mt-2 ${
                 index <= activeStep ? "text-[#0043CE]" : "text-[#6F6F6F]"

@@ -11,9 +11,7 @@ const EditProfile = () => {
   const [form] = Form.useForm();
   const [subSkillsLength, setSubSkillsLength] = useState(0);
   const [profilePicture, setProfilePicture] = useState<string | null>(null);
-  // const [companyLogo, setCompanyLogo] = useState<string | null>(null);
 
-  // Function for uploading the profile picture
   const handleProfilePictureUpload: UploadProps = {
     name: "file",
     multiple: false,
@@ -36,28 +34,7 @@ const EditProfile = () => {
     },
   };
 
-  // Function for uploading the company logo
-  // const handleCompanyLogoUpload: UploadProps = {
-  //   name: "file",
-  //   multiple: false,
-  //   showUploadList: false,
-  //   beforeUpload: (file) => {
-  //     const reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       setCompanyLogo(e?.target?.result as string);
-  //     };
-  //     reader.readAsDataURL(file);
-  //     return false;
-  //   },
-  //   onChange(info) {
-  //     const { status } = info.file;
-  //     if (status === "done") {
-  //       message.success(`${info.file.name} company logo uploaded successfully.`);
-  //     } else if (status === "error") {
-  //       message.error(`${info.file.name} company logo upload failed.`);
-  //     }
-  //   },
-  // };
+
 
   const handleRemoveMedia = (type: "profilePicture" | "companyLogo") => {
     if (type === "profilePicture") {
@@ -82,7 +59,6 @@ const EditProfile = () => {
           </h1>
           <p className="text-black">Edit some basic information about your profile</p>
         </div>
-        {/* Reduce the space between form items */}
         <Form form={form} layout="vertical" className="space-y-2" requiredMark={false}>
         <Form.Item
             name="profilePicture"

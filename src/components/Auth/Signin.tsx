@@ -11,7 +11,7 @@ interface AuthModalProps {
 
 const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
   const router = useRouter();
-  const [modalState, setModalState] = useState('closed'); // 'closed', 'opening', 'open', 'closing'
+  const [modalState, setModalState] = useState('closed'); 
 
   useEffect(() => {
     if (isOpen) {

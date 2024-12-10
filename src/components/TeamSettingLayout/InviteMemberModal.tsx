@@ -2,7 +2,7 @@
 import React from 'react';
 import { Input, Radio, Modal } from 'antd';
 import type { RadioChangeEvent } from 'antd';
-import './customRadio.css'; // Import the custom CSS
+import './customRadio.css'; 
 
 interface InviteMemberModalProps {
   isOpen: boolean;
@@ -39,8 +39,8 @@ const InviteMemberModal: React.FC<InviteMemberModalProps> = ({
       width={500}
       bodyStyle={{ padding: 0 }}
       style={{
-        borderRadius: '50px', // Modal wrapper radius
-        overflow: 'hidden', // Ensures that overflow respects the border radius
+        borderRadius: '50px', 
+        overflow: 'hidden', 
       }}
       modalRender={(modal) => (
         <div style={{ borderRadius: '50px', overflow: 'hidden' }}>
@@ -49,13 +49,13 @@ const InviteMemberModal: React.FC<InviteMemberModalProps> = ({
       )}
     >
       <div className="px-6 py-5">
-        {/* Header */}
+  
         <h2 className="text-2xl font-semibold text-[#000000] -mb-6">
           Invite Member
         </h2>
 
         <hr className="h-px my-8 bg-[#D7DEDD] border-0" />
-        {/* Email Input */}
+     
         <div className="mb-3">
           <label className="block text-sm font-medium text-[#333333] mb-2">
             Add Email Address
@@ -68,7 +68,7 @@ const InviteMemberModal: React.FC<InviteMemberModalProps> = ({
           />
         </div>
 
-        {/* Member Type Selection */}
+     
         <div className="mb-8">
           <label className="block text-sm font-medium text-[#333333] mb-3">
             Member Type
@@ -97,7 +97,7 @@ const InviteMemberModal: React.FC<InviteMemberModalProps> = ({
           </Radio.Group>
         </div>
 
-        {/* Submit Button */}
+
         <button
           onClick={handleSubmit}
           className="w-full py-2.5 bg-[#0ACD6C] text-white rounded-3xl

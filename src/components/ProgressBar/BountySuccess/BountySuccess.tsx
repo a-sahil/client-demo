@@ -9,7 +9,7 @@ const SuccessMessage = () => {
   return (
     <div className="min-h-screen flex items-start p-4 md:p-6">
       <div className="w-full max-w-md space-y-4">
-        {/* Animation container */}
+    
         <div className="relative w-[300px] -ml-16 sm:-ml-20 md:-ml-24">
           <DotLottieReact
             src="https://lottie.host/f5fec153-6504-4465-b154-f1a41783a4de/cmLnhdTr73.lottie"

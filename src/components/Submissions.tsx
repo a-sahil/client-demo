@@ -6,7 +6,7 @@ interface PrizeDistribution {
   position: string;
   amount: number;
   rank: string;
-  image?: string; // Optional image field
+  image?: string; 
 }
 
 export default function Submissions() {
@@ -34,7 +34,7 @@ export default function Submissions() {
     <button
       className={`px-6 py-2 text-sm font-medium transition-all duration-300 ${
         activeTab === "leaderboard"
-          ? "text-white bg-[#1A1919] p-1 py-1 rounded-md" // Active button style
+          ? "text-white bg-[#1A1919] p-1 py-1 rounded-md" 
           : "text-gray-400 bg-transparent hover:text-white"
       }`}
       onClick={() => setActiveTab("leaderboard")}
@@ -44,7 +44,7 @@ export default function Submissions() {
     <button
       className={`px-6 py-2 text-sm font-medium transition-all duration-300 ${
         activeTab === "recent"
-          ? "text-white bg-[#1A1919] rounded-md" // Active button style
+          ? "text-white bg-[#1A1919] rounded-md"
           : "text-gray-400 bg-transparent hover:text-white"
       }`}
       onClick={() => setActiveTab("recent")}
@@ -56,11 +56,11 @@ export default function Submissions() {
 
 
 
-          {/* Render Active Tab */}
+         
           {activeTab === "leaderboard" ? <Leaderboard /> : <Recent />}
         </div>
 
-        {/* Prize Section */}
+     
         <div>
           <h2 className="text-2xl font-semibold mb-6">Bounty Prize</h2>
           <div className="bg-[#252525] rounded-lg p-6 shadow-lg">
@@ -69,14 +69,14 @@ export default function Submissions() {
               <div className="text-3xl font-bold text-white mt-1">40,000 TON</div>
             </div>
 
-            <div className="space-y-4 relative"> {/* Add relative positioning here */}
-  {/* Line connecting dots */}
-  <div className="absolute left-[14px] top-20 h-[70%] w-[0.5px] bg-white z-0"></div> {/* Line connecting dots */}
+            <div className="space-y-4 relative"> 
+
+  <div className="absolute left-[14px] top-20 h-[70%] w-[0.5px] bg-white z-0"></div>
 
   {prizeDistribution.map((prize, index) => (
     <div
       key={prize.position}
-      className="relative flex items-center gap-4 p-2 z-10" // Ensure dots are above the line
+      className="relative flex items-center gap-4 p-2 z-10" 
     >
       {prize.image && index === 0 ? (
         <img

@@ -32,7 +32,7 @@ const Dashboard: FC = () => {
     </div>
   </div>
 
-  {/* Dynamic Button */}
+ 
   {activeTab === "about" ? (
     <button className="bg-gradient-to-r from-[#1FBF4A] to-[#22CC77] px-4 py-2 rounded-md mt-12">
       Submit Now
@@ -45,7 +45,7 @@ const Dashboard: FC = () => {
 </div>
 
 
-        {/* Navigation */}
+   
         <div className="border-b border-gray-700 bg-[#2E2D2D] mb-8 rounded-md">
           <nav className="flex">
             <button
@@ -71,9 +71,9 @@ const Dashboard: FC = () => {
           </nav>
         </div>
 
-        {/* Tab Container with Dynamic Rendering */}
+     
         <div className="mt-8 overflow-hidden">
-          {/* Tab Container */}
+       
           <div
             className="flex transition-transform duration-500"
             style={{
@@ -83,15 +83,15 @@ const Dashboard: FC = () => {
                   : activeTab === "submissions"
                   ? "translateX(-100%)"
                   : "translateX(0%)",
-              // smooth transition for switching
+            
             }}
           >
-            {/* About Section */}
+         
             <div className="w-full flex-shrink-0">
               {activeTab === "about" && <About />}
             </div>
 
-            {/* Submissions Section */}
+        
             <div className="w-full flex-shrink-0">
               {activeTab === "submissions" && <Submissions />}
             </div>

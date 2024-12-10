@@ -8,30 +8,17 @@ import FormComponent from '@/components/ProgressBar/Basic/FormComponent';
 import PrizeComponent from '@/components/ProgressBar/Reward/PrizeComponent';
 import BountySuccess from '@/components/ProgressBar/BountySuccess/BountySuccess';
 
-import { Menu } from 'lucide-react'; // Import the menu icon
+import { Menu } from 'lucide-react'; 
 
 import TeamMembers from '@/components/TeamSettingLayout/TeamMembers';
 
 const CreateListingForm: FC = () => {
   // const [form] = useForm();
-  const [activeStep, setActiveStep] = useState(0); // 0 for the initial step
-  const [stepValid, setStepValid] = useState(false); // Tracks the current step's validation state
-  const [isSuccess, setIsSuccess] = useState(false); // Flag for success step
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for toggling sidebar
+  const [activeStep, setActiveStep] = useState(0); 
+  const [stepValid, setStepValid] = useState(false); 
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
   const [activeComponent, setActiveComponent] = useState<string>('MyListing');
-
-
-
-  // const renderActiveComponent = () => {
-  //   switch (activeComponent) {
-  //     case 'MyListing':
-  //       return <MyListing />;
-  //     case 'TeamSettings':
-  //       return <TeamMembers />;
-  //     default:
-  //       return null;
-  //   }
-  // };
 
 
   const stepContent = [
@@ -69,10 +56,10 @@ const CreateListingForm: FC = () => {
 
   const handleContinue = () => {
     if (activeStep < stepContent.length - 1) {
-      setActiveStep(activeStep + 1); // Move to the next step
-      setStepValid(false); // Reset validation for the next step
+      setActiveStep(activeStep + 1); 
+      setStepValid(false); 
     } else {
-      setIsSuccess(true); // Trigger the success screen
+      setIsSuccess(true); 
     }
   };
 
@@ -81,12 +68,11 @@ const CreateListingForm: FC = () => {
 
     return (
       <div className="flex min-h-screen bg-white">
-        {/* Sidebar for large screens */}
+   
         <div className="hidden lg:block w-60">
           <Sidebar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
         </div>
-    
-        {/* Sidebar for mobile - toggled with the hamburger button */}
+
         {isSidebarOpen && (
           <div
             className="fixed inset-0 z-50 bg-black bg-opacity-50 lg:hidden"
@@ -98,8 +84,8 @@ const CreateListingForm: FC = () => {
           </div>
         )}
     
-        {/* Hamburger button for mobile */}
-        {!isSidebarOpen && ( // Only show the hamburger button when the sidebar is closed
+     
+        {!isSidebarOpen && ( 
           <button
             className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-white shadow-md rounded-full"
             onClick={() => setIsSidebarOpen(true)}
@@ -109,7 +95,7 @@ const CreateListingForm: FC = () => {
         )}
     
         <main className="flex-1 p-6">
-          {/* Conditionally render the TeamMembers component when "TeamSettings" is active */}
+        
 {isSuccess ? (
   <div>
      <div className="w-72 pr-4">

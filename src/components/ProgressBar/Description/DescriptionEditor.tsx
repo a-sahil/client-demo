@@ -2,15 +2,15 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
 import Placeholder from '@tiptap/extension-placeholder';
-import TextStyle from '@tiptap/extension-text-style'; // Import TextStyle
-import Underline from '@tiptap/extension-underline'; // Import Underline
+import TextStyle from '@tiptap/extension-text-style'; 
+import Underline from '@tiptap/extension-underline'; 
 import { Bold, Italic, Underline as UnderlineIcon, Link2 } from 'lucide-react';
 import { FC, useEffect } from 'react';
 import { Tooltip } from 'antd';
 
 interface DescriptionEditorProps {
   onChange?: (content: string) => void;
-  onValidate?: (isValid: boolean) => void; // Validation prop
+  onValidate?: (isValid: boolean) => void;
 }
 
 const DescriptionEditor: FC<DescriptionEditorProps> = ({ onChange, onValidate }) => {
@@ -35,8 +35,6 @@ const DescriptionEditor: FC<DescriptionEditorProps> = ({ onChange, onValidate })
     onUpdate: ({ editor }) => {
       const content = editor.getHTML();
       onChange?.(content);
-
-      // Validation logic
       const isValid = content.trim().length > 0 && !editor.isEmpty;
       onValidate?.(isValid);
     },
@@ -56,7 +54,7 @@ const DescriptionEditor: FC<DescriptionEditorProps> = ({ onChange, onValidate })
 
   const toggleUnderline = () => {
     if (editor) {
-      editor.chain().focus().toggleUnderline().run(); // Now underline should work
+      editor.chain().focus().toggleUnderline().run(); 
     }
   };
 

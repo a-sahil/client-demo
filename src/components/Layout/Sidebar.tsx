@@ -14,7 +14,7 @@ export const Sidebar: FC<SidebarProps> = ({ setActiveComponent, activeComponent 
   const router = useRouter();
   const handleButtonClick = (component: string) => {
     if (component === 'GetHelp') {
-      window.open('https://t.me/Sahil0x49', '_blank');
+      window.open('https://t.me/', '_blank');
     } else {
       setActiveComponent(component);
     }
@@ -67,7 +67,7 @@ export const Sidebar: FC<SidebarProps> = ({ setActiveComponent, activeComponent 
             <span className="text-gray-500">P</span>
           </div>
           <div>
-            <div className="text-sm font-medium">Parry</div>
+            <div className="text-sm font-medium">@XYZ</div>
             <button
               className="text-xs text-gray-500"
               onClick={() => router.push('/EditProfile')}

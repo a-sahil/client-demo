@@ -21,7 +21,7 @@ const PrizeComponent: React.FC<PrizeComponentProps> = ({ onPrizeChange, onValida
 
   const tokens: Token[] = [
     { symbol: 'TON', icon: '/ton_symbol.png' },
-    // Add more tokens as needed
+  
   ];
 
   const validatePrize = (value: string) => {
@@ -63,7 +63,7 @@ const PrizeComponent: React.FC<PrizeComponentProps> = ({ onPrizeChange, onValida
         >
           {tokens.map((token) => (
             <Select.Option key={token.symbol} value={token.symbol}>
-              <div className="flex items-center space-x-3"> {/* Flexbox with spacing */}
+              <div className="flex items-center space-x-3">
                 {/* Token Image */}
                 <div className="w-6 h-6 relative">
                   <Image
@@ -73,7 +73,7 @@ const PrizeComponent: React.FC<PrizeComponentProps> = ({ onPrizeChange, onValida
                     className="rounded-full"
                   />
                 </div>
-                {/* Token Symbol */}
+              
                 <span>{token.symbol}</span>
               </div>
             </Select.Option>
@@ -81,7 +81,6 @@ const PrizeComponent: React.FC<PrizeComponentProps> = ({ onPrizeChange, onValida
         </Select>
       </div>
 
-      {/* Prize Counter */}
       <div className="flex justify-between items-center text-sm text-gray-600">
         <span className="text-[#718096]">1 Prize</span>
         <span className="text-[#718096]">{prizeAmount || 0} {selectedToken} Total</span>
@@ -89,7 +88,7 @@ const PrizeComponent: React.FC<PrizeComponentProps> = ({ onPrizeChange, onValida
 
       <hr className="h-px my-8 bg-[#94A3B8] border-x-2"></hr>
 
-      {/* First Prize Input */}
+
       <div>
         <label className="text-[#718096] text-sm mb-2 block">First Prize</label>
         <div className="flex items-center">
@@ -121,7 +120,6 @@ const PrizeComponent: React.FC<PrizeComponentProps> = ({ onPrizeChange, onValida
 
       <hr className="h-px my-8 bg-[#94A3B8] border-x-2"></hr>
 
-      {/* Action Buttons */}
       <div className="flex gap-4">
         <Button block className="flex-1">
           <div className="flex items-center justify-center">

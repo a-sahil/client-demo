@@ -28,7 +28,7 @@ const TeamMembers: React.FC = () => {
     },
   ];
 
-  // Filter team members based on the search query
+
   const filteredMembers = members.filter(
     (member) =>
       member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -36,22 +36,22 @@ const TeamMembers: React.FC = () => {
   );
 
   const handleInviteClick = () => {
-    setIsInviteModalOpen(true); // Open the modal
+    setIsInviteModalOpen(true); 
   };
 
   const handleInviteMember = (email: string, type: 'Member' | 'Admin') => {
     console.log('Inviting:', email, type);
-    // Implement your invite logic here (e.g., API call to invite a member)
+   
   };
 
   const handleModalClose = () => {
-    setIsInviteModalOpen(false); // Close the modal
+    setIsInviteModalOpen(false); 
   };
 
   return (
     <div className="flex-1 min-h-screen">
       <div className="p-4 sm:p-6 -mt-5">
-        {/* Header Section */}
+       
         <div className="mb-8 sm:mb-12">
           <h1 className="text-lg sm:text-xl lg:text-2xl font-medium text-gray-800 mb-1 sm:mb-2">
             Team Members
@@ -61,9 +61,9 @@ const TeamMembers: React.FC = () => {
           </p>
         </div>
 
-        {/* Search and Action Section */}
+  
         <div className="relative flex flex-col sm:flex-row gap-4 mb-6">
-          {/* Search Input */}
+  
           <div className="w-full sm:w-3/5 order-2 sm:order-1 sm:-mt-7">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -79,13 +79,13 @@ const TeamMembers: React.FC = () => {
             </div>
           </div>
 
-          {/* Invite Button */}
+   
           <button
             className="w-full sm:w-auto px-4 py-2 bg-[#1FBF4A] text-white 
               rounded-lg hover:bg-[#22CC77] transition-colors 
               flex items-center justify-center text-sm font-medium
               order-1 sm:order-2 sm:-mt-8 ml-auto"
-            onClick={handleInviteClick} // Trigger modal on click
+            onClick={handleInviteClick} 
           >
             <span className="mr-1">+</span>
             Invite Members
@@ -93,12 +93,9 @@ const TeamMembers: React.FC = () => {
         </div>
 
        
-
-        {/* Members Table */}
         <div className="-mx-4 sm:mx-0 overflow-auto">
           <div className="min-w-[600px] rounded-lg bg-gray-50">
             <table className="w-full">
-              {/* Table Header */}
               <thead>
                 <tr className="text-left">
                   <th className="px-4 sm:px-6 py-3 text-sm font-medium text-gray-500">Member</th>
@@ -107,7 +104,6 @@ const TeamMembers: React.FC = () => {
                 </tr>
               </thead>
 
-              {/* Table Body */}
               <tbody className="bg-white">
                 {filteredMembers.map((member) => (
                   <tr key={member.id} className="border-t border-gray-100">
@@ -138,7 +134,7 @@ const TeamMembers: React.FC = () => {
               </tbody>
             </table>
 
-            {/* Empty State */}
+       
             {filteredMembers.length === 0 && (
               <div className="text-center py-12 bg-white">
                 <p className="text-gray-500 text-sm">No members found</p>
@@ -147,8 +143,6 @@ const TeamMembers: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Invite Members Modal */}
       <InviteMemberModal
         isOpen={isInviteModalOpen} // Pass the modal open state
         onClose={handleModalClose} // Pass the modal close function

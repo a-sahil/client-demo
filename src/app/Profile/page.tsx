@@ -152,9 +152,9 @@ const ProfilePage = () => {
 
         <hr className="h-px my-8 bg-[#18212E] border-0" />
 
-        {/* Stats */}
+   
         <div className="flex gap-8 mb-8">
-  {/* Stats */}
+
   <div className="flex gap-8">
     <div>
       <p className="text-lg font-bold text-[#D3D9E5]">$0</p>
@@ -189,7 +189,7 @@ const ProfilePage = () => {
           </div>
         </div>
 
-                  {/* Details and Skills */}
+           
                   <div className="grid grid-cols-2 gap-8 mb-12 -mt-28">
           <div>
             <h2 className="text-xl font-semibold mb-4 text-[#D5DDF0]">Details</h2>
@@ -207,7 +207,7 @@ const ProfilePage = () => {
 
         <hr className="h-px my-4 bg-[#18212E] border-0" />
 
-        {/* Proof of Work */}
+       
         <div>
           <h2 className="text-xl font-semibold mb-4 text-white">Proof of Work</h2>
           <hr className="h-px my-4 bg-[#18212E] border-0" />

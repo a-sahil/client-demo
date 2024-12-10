@@ -19,7 +19,7 @@ const FormComponent: FC<{ onValidate: (isValid: boolean) => void }> = ({
     form.setFieldsValue({ deadline: date });
   };
 
-  // Typing the parameters of onFieldsChange
+  
   const onFieldsChange = (
     // changedFields: any[], // Typing changedFields as an array of form field changes
     // allFields: any[] // Typing allFields as an array, even if it's not used
@@ -45,7 +45,6 @@ const FormComponent: FC<{ onValidate: (isValid: boolean) => void }> = ({
       }
     };
 
-    // Monitor form changes to enable/disable the button
     checkFormCompletion();
   }, [form]);
 
@@ -59,7 +58,7 @@ const FormComponent: FC<{ onValidate: (isValid: boolean) => void }> = ({
         initialValues={{
           listingGeography: "Global",
         }}
-        onFieldsChange={onFieldsChange} // Attach event handler here
+        onFieldsChange={onFieldsChange} 
       >
         <Form.Item
           label={
